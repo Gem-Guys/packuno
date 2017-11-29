@@ -19,5 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'tripId',
     });
   };
+  Trip.sync();
   return Trip;
 };

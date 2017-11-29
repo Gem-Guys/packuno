@@ -8,11 +8,18 @@ const config = require('../config/config')[env];
 
 const db = {};
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
-} else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// if (config.use_env_variable) {
+//   let sequelize = new Sequelize(process.env[config.use_env_variable]);
+// } else {
+let sequelize = new Sequelize(config.database, config.username, config.password, {
+  host: config.host,
+  dialect: config.dialect,
+  dialectOptions: {
+    ssl: true,
+    native: true,
+  },
+});
+// }
 
 fs
   .readdirSync(__dirname)

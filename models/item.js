@@ -11,5 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'itemId',
     });
   };
+  Item.sync();
   return Item;
 };
