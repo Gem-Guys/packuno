@@ -21,7 +21,7 @@ const Weather = (props) => {
       return (<Historical weather={props.historical} />);
     }
     if (props.weatherFilter === 'SHOW_CURRENT') {
-      return <Forecast weather={props.forecast} />;
+      return <Forecast weather={props.historical} />;
     }
     return (<h2>Weather</h2>);
   };
