@@ -3,9 +3,8 @@
       "host": "127.0.0.1",
       "dialect": "postgres",
       "database" : "packuno",
-      "username" : "packuno",
-      "password":"packuno"
+      "username" : "MaxTam",
+      "password":""
   }
 }
 
-//set above up with own postgres information for use on local machine
