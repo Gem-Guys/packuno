@@ -34,10 +34,11 @@ passport.use(new GoogleStrategy(
 ));
 //middleware that checks to see if a user has signed in before allowing them to access certain pages. 
 const isAuthenticated =  (req, res, next) =>{
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.redirect('/login');
+  // if(req.isAuthenticated()){
+  //   return next();
+  // }
+  // res.redirect('/login');
+  next();
 }
 
 const app = express();
@@ -92,6 +93,10 @@ app.get('/dashboard', isAuthenticated, (req, res) => {
 });
 
 app.get('/home', isAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
+});
+
+app.get('/test', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
 });
 
