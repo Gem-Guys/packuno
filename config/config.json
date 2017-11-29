@@ -1,8 +1,9 @@
 {
   "development": {
-      "database" : "packuno",
-      "username" : "MaxTam",
-      "password":""
+      "host": "ec2-50-19-86-17.compute-1.amazonaws.com",
+      "database" : "dadged0ivofm4m",
+      "username" : "sswadxlwppnmai",
+      "password": "d46c24c517e82d3ad4b577dee6346558d00693a167b9b74e9927d4b3206a87ca"
   }
 }
 
