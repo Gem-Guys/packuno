@@ -29,7 +29,6 @@ const Trip = (props) => {
       <VisibleItemList />
       <Footer />
     </Paper>
-    <WeatherCont />
   </div>
 )};
 

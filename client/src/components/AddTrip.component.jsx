@@ -135,6 +135,7 @@ class AddTrip extends React.Component {
     return (
       <div className={classes.root}>
         <h1>Create a new packing list</h1>
+        <a href="/test">Click ME</a>
         <br />
         <form onSubmit={this.onFormSubmit}>
           <div className={classes.stepHeading}>

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Forecast from './Forecast.component.jsx';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -21,7 +22,7 @@ const Weather = (props) => {
       return (<Historical weather={props.historical} />);
     }
     if (props.weatherFilter === 'SHOW_CURRENT') {
-      return <Forecast weather={props.historical} />;
+      return <Forecast weather={props.forecast} />;
     }
     return (<h2>Weather</h2>);
   };
@@ -30,6 +31,12 @@ const Weather = (props) => {
   return (
     <Paper className={classes.root} elevation={4}>
       <h2>Weather</h2>
+      <Button type="submit" flat color="primary" >
+      Forecast
+      </Button>
+      <Button type="submit" flat color="primary" >
+      Historical
+      </Button>
       {renderWeather()}
     </Paper>
     );

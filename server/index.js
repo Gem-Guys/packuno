@@ -34,11 +34,10 @@ passport.use(new GoogleStrategy(
 ));
 //middleware that checks to see if a user has signed in before allowing them to access certain pages. 
 const isAuthenticated =  (req, res, next) =>{
-  // if(req.isAuthenticated()){
-  //   return next();
-  // }
-  // res.redirect('/login');
-  next();
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect('/login');
 }
 
 const app = express();
@@ -62,7 +61,7 @@ passport.deserializeUser(function(id, done){
   });
 });
 
-//returns a bool to see if a user is loggedin or not
+// returns a bool to see if a user is loggedin or not
 app.get('/check', (req, res) => {
   if(req.isAuthenticated()){
     res.send(true);
@@ -120,8 +119,6 @@ app.get('/user', (req, res) => {
     (res.send(user));
   });
 });
-
-
 
 // API Endpoints
 
@@ -196,6 +193,7 @@ app.get('/weather/', (req, res) => {
   const tripEnd = '20170905';
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   return isoCode.isoCode('france').then((result) => {
+    console.log('result in server', result);
     const startMonth = Number(tripStart.slice(4, 6)) - 1;
     const endMonth = Number(tripEnd.slice(4, 6)) - 1;
     const rendered = [[months[startMonth], result[startMonth]], [months[endMonth], result[endMonth]]];
@@ -208,7 +206,7 @@ app.get('/weather/', (req, res) => {
 app.get('/forecast/', (req, res) => {
   const options = {
     type: 'GET',
-    uri: 'http://api.wunderground.com/api/1acaa967ad91ec5b/forecast10day/q/CA/San_Francisco.json',
+    uri: 'http://api.wunderground.com/api/1acaa967ad91ec5b/forecast10day/q/Uk/london.json',
   };
   rp(options).then(result => result).then((result) => {
     res.body = result;

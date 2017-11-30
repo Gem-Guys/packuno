@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, HashRouter } from 'react-router-dom';
 import packunoApp from './reducers/index.reducers.jsx';
 import Weather from './containers/Weather.container.jsx';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -16,6 +16,7 @@ import Trip from './components/Trip.component';
 import Dashboard from './components/Dashboard.component';
 import LoginCont from './containers/Login.container';
 import Root from './components/Root.component';
+import Jeff from './components/Jeff';
 
 const store = createStore(
   reducer,
@@ -41,7 +42,7 @@ render(
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
       <Router>
-        <Route path="/" component={Root} />
+        <Route path="/" component={Root}/>
       </Router>
     </MuiThemeProvider>
   </Provider>

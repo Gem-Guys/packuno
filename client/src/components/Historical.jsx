@@ -2,6 +2,7 @@ import React from 'react';
 
 const Historical = props => (
   <div className="weather-widget">
+    <h2>Monthly Average</h2>
     {props.weather.map(item => (
       <div className="weather-item">
         <h2>{item[0]}</h2>
