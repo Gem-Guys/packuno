@@ -109,7 +109,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/dashboard',
     failureRedirect: '/login',
-  })
+  }),
 );
 
 //gets user and sends it back to wherever this is called
@@ -188,7 +188,7 @@ app.patch('/trip/items/:id', (req, res) => {
 });
 
 //gets historical weather from worldbank API. Searches by country. Dashboard will need to collect both city and country in order to call both. 
-app.get('/weather/', (req, res) => {
+app.get('/weather', (req, res) => {
   const tripStart = '20170827';
   const tripEnd = '20170905';
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -203,11 +203,12 @@ app.get('/weather/', (req, res) => {
 });
 
 //gets current weather from weather underground. Will need to be fixed depending on city
-app.get('/forecast/', (req, res) => {
+app.get('/forecast', (req, res) => {
   const options = {
     type: 'GET',
     uri: 'http://api.wunderground.com/api/1acaa967ad91ec5b/forecast10day/q/Uk/london.json',
   };
+  console.log('request', req);
   rp(options).then(result => result).then((result) => {
     res.body = result;
     res.send(res.body);

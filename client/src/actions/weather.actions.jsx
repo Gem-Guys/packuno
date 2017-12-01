@@ -1,4 +1,5 @@
 import isoCode from '../utils/weatherHelper.js';
+import store from '..'
 
 const request = require('request');
 const rp = require('request-promise');
@@ -18,9 +19,9 @@ export const setHistoricalAsync = () => (dispatch, getState) => {
     type: 'GET',
     uri: 'http://localhost:3000/weather',
     qs: {
-      tripStart: '',
-      tripEnd: '',
-      country: '',
+      tripStart: getState().trips.byId['1'].startDate,
+      tripEnd: getState().trips.byId['1'].endDate,
+      country: getState().trips.byId['1'].destination,
     },
   };
   const weather = rp(options);
@@ -39,8 +40,8 @@ export const setForecastAsync = () => (dispatch, getState) => {
     type: 'GET',
     uri: 'http://localhost:3000/forecast',
     qs: {
-      country: '',
-      city: '',
+      country: getState().trips.byId['1'].destination,
+      city: getState().trips.byId['1'].destination,
     },
   };
   const attack = rp(options);
