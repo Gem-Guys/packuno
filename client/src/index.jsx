@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { BrowserRouter as Router, Route, Link, HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import packunoApp from './reducers/index.reducers.jsx';
 import Weather from './containers/Weather.container.jsx';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -42,7 +42,7 @@ render(
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
       <Router>
-        <Route path="/" component={Root}/>
+        <Route path="/" component={Root} />
       </Router>
     </MuiThemeProvider>
   </Provider>

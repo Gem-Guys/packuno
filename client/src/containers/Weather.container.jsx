@@ -11,8 +11,6 @@ export class WeatherContainer extends React.Component {
   componentDidMount() {
     this.props.Forecast();
     this.props.Historical();
-    this.props.showCurrent;
-    this.props.showHistorical;
   }
 
   renderComponents() {
