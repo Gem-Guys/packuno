@@ -1,0 +1,24 @@
+{
+  "Essentials": [
+    "Printed Trip Itinerary", "Boarding Pass", "Cell Phone Charger", "Cell Phone", "Camera", "Book", "Ear Plugs", "Reading Glasses", "Pajamas",
+    "Belt", "House Key", "Wallet", "Pain Reliever Pills", "Medication", "Vitamins", "Chapstick", "Extra Battery For Cell Phone", "Hand Sanitizer"
+  ],
+  "Toiletries": [
+    "Contact Solution", "contacts", "Deodorant", "Floss", "Hair Brush", "Toothpaste", "Toothbrush", "Nail Clippers", "Qtips"
+  ],
+  "Working": [
+    "Business Cards", "Work Cell Phone", "Work Cell Phone Charger", "Vpn Keyfob", "Laptop", "Laptop Charger"
+  ],
+  "International": [
+    "Passport", "Visa(Immigration)", "Vaccination Certificates", "Power Adapter", "Power Transformer", "Foreign Currency", "Medical Insurance Card"
+  ],
+  "Running": [
+    "Running Headphones", "Music Player", "running Shirt", "Running Shorts", "Running Socks", "Running Shoes"
+  ],
+  "Beach": [
+    "Beach Towel", "Sandals", "Hat", "Sunscreen", "Sunglasses", "Swimsuit", "Goggles"
+  ],
+  "Hiking": [ 
+    "Handheld GPS", "Compass", "First Aid Kit", "Bug Spray", "Sunscreen", "Hat", "Water Bottle", "Sunglasses", "Socks(Non-cotton)", "Pants(Non-cotton)", "Shirts(Non-cotton)", "Hiking Shoes"
+  ]
+}

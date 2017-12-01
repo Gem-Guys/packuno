@@ -16,6 +16,7 @@ const grabWeather = isoCode => new Promise((resolve, reject) => {
     resolve(farenheit);
   });
 }).then((result) => {
+  console.log('api results', result);
   return result;
 });
 
