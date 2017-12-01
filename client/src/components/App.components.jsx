@@ -13,22 +13,24 @@ export class AppContainer extends React.Component {
 
   render() {
     console.log('this.props in app component', this.props);
-    if (this.props.isLoggedIn) {
+    // if (this.props.isLoggedIn) {
       return (
           <Router>
           <div>
+            <Route path="/" component={Trip} >
+            <Route path="/test" render={ () => <Weather /> } />
             <Route path="/dashboard" component={Dashboard} />
-            <Route path="/test" component={Weather} />
             <Route path="/login" component={LoginCont} />
-            <Route path="/" component={Trip} />
+            </Route>
           </div>
         </Router>
       );
-    } else {
-      return (
-        <LoginCont />
-      );
-    }
+    // }
+    // else {
+    //   return (
+    //     <LoginCont />
+    //   );
+    // }
   }
 }
 

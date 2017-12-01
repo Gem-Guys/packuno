@@ -34,10 +34,10 @@ passport.use(new GoogleStrategy(
 ));
 //middleware that checks to see if a user has signed in before allowing them to access certain pages. 
 const isAuthenticated =  (req, res, next) =>{
-  if(req.isAuthenticated()){
+  // if(req.isAuthenticated()){
     return next();
-  }
-  res.redirect('/login');
+  // }
+  // res.redirect('/login');
 }
 
 const app = express();
