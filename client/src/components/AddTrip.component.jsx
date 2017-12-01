@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
+import Search from './Search.jsx';
 
 const styles = theme => ({
   root: {
@@ -129,12 +130,15 @@ class AddTrip extends React.Component {
   };
 
   render = () => {
+    // debugger;
     const { trips, recentTrips, classes } = this.props;
 
 
     return (
       <div className={classes.root}>
         <h1>Create a new packing list</h1>
+        <br />
+        <Search />
         <br />
         <form onSubmit={this.onFormSubmit}>
           <div className={classes.stepHeading}>
@@ -161,7 +165,7 @@ class AddTrip extends React.Component {
               id="start_date"
               label="Departure Date"
               type="date"
-              value={this.state.startDate}  
+              value={this.state.startDate}
               onChange={e => this.setState({ startDate: e.target.value })}
               className={classes.textField}
               InputLabelProps={{
@@ -172,7 +176,7 @@ class AddTrip extends React.Component {
               id="end_date"
               label="Return Date"
               type="date"
-              value={this.state.endDate}  
+              value={this.state.endDate}
               onChange={e => this.setState({ endDate: e.target.value })}
               className={classes.textField}
               InputLabelProps={{

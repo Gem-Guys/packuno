@@ -1,8 +1,10 @@
 {
   "development": {
       "database" : "packuno",
-      "username" : "MaxTam",
-      "password":""
+      "username" : "ericlau",
+      "password":"",
+      "host": "localhost",
+      "dialect": "postgres"
   }
 }
 

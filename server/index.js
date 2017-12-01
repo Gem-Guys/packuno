@@ -10,11 +10,11 @@ const Promise = require('bluebird');
 const itemsHelper = require('../database/itemsHelpers');
 const tripsHelper = require('../database/tripsHelpers');
 
-// FILL IN DATABASE FILE --> 
+// FILL IN DATABASE FILE -->
 const database = require('../database/index.js');
 const path = require('path');
 const pg = require('pg');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -32,7 +32,7 @@ passport.use(new GoogleStrategy(
     });
   })
 ));
-//middleware that checks to see if a user has signed in before allowing them to access certain pages. 
+//middleware that checks to see if a user has signed in before allowing them to access certain pages.
 const isAuthenticated =  (req, res, next) =>{
   // if(req.isAuthenticated()){
   //   return next();
@@ -101,11 +101,11 @@ app.get('/test', isAuthenticated, (req, res) => {
 });
 
 //redirects to google auth page
-app.get('/auth/google', 
+app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-//redirects to /dashboard on successful login 
+//redirects to /dashboard on successful login
 app.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/dashboard',
@@ -190,7 +190,7 @@ app.patch('/trip/items/:id', (req, res) => {
     });
 });
 
-//gets historical weather from worldbank API. Searches by country. Dashboard will need to collect both city and country in order to call both. 
+//gets historical weather from worldbank API. Searches by country. Dashboard will need to collect both city and country in order to call both.
 app.get('/weather/', (req, res) => {
   const tripStart = '20170827';
   const tripEnd = '20170905';
