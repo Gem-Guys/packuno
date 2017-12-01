@@ -1,11 +1,15 @@
 import isoCode from '../utils/weatherHelper.js';
-import store from '..'
 
 const request = require('request');
 const rp = require('request-promise');
 
 export const showCurrent = filter => ({
   type: 'SHOW_CURRENT',
+  filter,
+});
+
+export const showHistorical = filter => ({
+  type: 'SHOW_HISTORICAL',
   filter,
 });
 

@@ -208,7 +208,6 @@ app.get('/forecast', (req, res) => {
     type: 'GET',
     uri: 'http://api.wunderground.com/api/1acaa967ad91ec5b/forecast10day/q/Uk/london.json',
   };
-  console.log('request', req);
   rp(options).then(result => result).then((result) => {
     res.body = result;
     res.send(res.body);
