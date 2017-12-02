@@ -19,13 +19,14 @@ export const setHistorical = historicalArray => ({
 });
 
 export const setHistoricalAsync = () => (dispatch, getState) => {
+  const state = getState();
   const options = {
     type: 'GET',
-    uri: 'http://localhost:3000/weather',
+    uri: 'http://localhost:4000/weather',
     qs: {
-      tripStart: getState().trips.byId['1'].startDate,
-      tripEnd: getState().trips.byId['1'].endDate,
-      country: getState().trips.byId['1'].destination,
+      tripStart: state.trips.byId[state.currentTripId].departureDate.replace(/-/gi, ''),
+      tripEnd: state.trips.byId[state.currentTripId].returnDate.replace(/-/gi, ''),
+      country: state.destination.split(', ')[2],
     },
   };
   const weather = rp(options);
@@ -40,12 +41,20 @@ export const setForecast = forecastArray => ({
 });
 
 export const setForecastAsync = () => (dispatch, getState) => {
+  let { destination } = getState();
+  destination = destination.split(', ');
+  let country = '';
+  if (destination[2] === 'United States') {
+    country = destination[1];
+  } else {
+    country = destination[2];
+  }
   const options = {
     type: 'GET',
-    uri: 'http://localhost:3000/forecast',
+    uri: 'http://localhost:4000/forecast',
     qs: {
-      country: getState().trips.byId['1'].destination,
-      city: getState().trips.byId['1'].destination,
+      country,
+      city: destination[0],
     },
   };
   const attack = rp(options);

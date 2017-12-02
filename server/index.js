@@ -40,14 +40,9 @@ passport.use(new GoogleStrategy(
     });
   })
 ));
-<<<<<<< f169eac25d0d9d095cf30d6266eef5aa06377349
-//middleware that checks to see if a user has signed in before allowing them to access certain pages.
-const isAuthenticated =  (req, res, next) =>{
-=======
 
 // middleware that checks to see if a user has signed in before allowing them to access certain pages.
 const isAuthenticated = (req, res, next) => {
->>>>>>> rebase
   // if(req.isAuthenticated()){
     return next();
   // }
@@ -113,14 +108,6 @@ app.get('/test', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
 });
 
-<<<<<<< f169eac25d0d9d095cf30d6266eef5aa06377349
-//redirects to google auth page
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
-);
-
-//redirects to /dashboard on successful login
-=======
 app.get('/itemSearch', (req, res) => {
   client.itemSearch({
     keyword: req.query.keyword,
@@ -137,7 +124,6 @@ app.get(
 );
 
 // redirects to /dashboard on successful login
->>>>>>> rebase
 app.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/dashboard',
@@ -222,10 +208,11 @@ app.patch('/trip/items/:id', (req, res) => {
 
 //gets historical weather from worldbank API. Searches by country. Dashboard will need to collect both city and country in order to call both.
 app.get('/weather', (req, res) => {
-  const tripStart = '20170827';
-  const tripEnd = '20170905';
+  // console.log(req.query);
+  const tripStart = req.query.tripStart;
+  const tripEnd = req.query.tripEnd;
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  return isoCode.isoCode('france').then((result) => {
+  return isoCode.isoCode(req.query.country).then((result) => {
     console.log('result in server', result);
     const startMonth = Number(tripStart.slice(4, 6)) - 1;
     const endMonth = Number(tripEnd.slice(4, 6)) - 1;
@@ -237,9 +224,11 @@ app.get('/weather', (req, res) => {
 
 //gets current weather from weather underground. Will need to be fixed depending on city
 app.get('/forecast', (req, res) => {
+  // console.log(req.query);
+  const uri = `http://api.wunderground.com/api/1acaa967ad91ec5b/forecast10day/q/${req.query.country}/${req.query.city}.json`;
   const options = {
     type: 'GET',
-    uri: 'http://api.wunderground.com/api/1acaa967ad91ec5b/forecast10day/q/Uk/london.json',
+    uri,
   };
   rp(options).then(result => result).then((result) => {
     res.body = result;

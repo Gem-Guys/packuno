@@ -1,4 +1,4 @@
-const updateDestination = (state = '', action) => {
+const updateDestination = (state = 'Tokyo, Tokyo, Japan', action) => {
   if (action.type === 'UPDATE_DESTINATION') {
     return action.destination;
   }

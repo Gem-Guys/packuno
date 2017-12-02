@@ -7,7 +7,7 @@ const seedState = {
       1: {
         id: 1,
         destination: 'Hong Kong',
-        departureDate: '2017-9-29',
+        departureDate: '2017-09-29',
         returnDate: '2017-11-01',
       },
       2: {
