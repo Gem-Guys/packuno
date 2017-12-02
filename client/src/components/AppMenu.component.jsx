@@ -238,7 +238,7 @@ class AppMenu extends React.Component {
               </div>
               <Divider />
               <div className={classes.createContainer} >
-                <Button raised color="primary" className={classes.saveButton}>
+                <Button raised href="/trip "color="primary" className={classes.saveButton}>
                   New Trip
                 </Button>
               </div>

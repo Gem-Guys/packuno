@@ -20,7 +20,6 @@ import Jeff from './components/Jeff';
 
 const store = createStore(
   reducer,
-  seedState,
   compose(
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f,
