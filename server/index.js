@@ -9,6 +9,8 @@ const passport = require('passport');
 const Promise = require('bluebird');
 const itemsHelper = require('../database/itemsHelpers');
 const tripsHelper = require('../database/tripsHelpers');
+const amazon = require('amazon-product-api');
+const { aws } = require('../config/config.json');
 
 // FILL IN DATABASE FILE -->
 const database = require('../database/index.js');
@@ -18,7 +20,13 @@ const port = process.env.PORT || 4000;
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-//google OAuth using passport
+const client = amazon.createClient({
+  awsId: aws.id,
+  awsSecret: aws.secret,
+  awsTag: aws.tag,
+});
+
+// google OAuth using passport
 passport.use(new GoogleStrategy(
   {
     clientID: '701084384568-cfgkqkmh3th8usnokt4aqle9am77ei0f.apps.googleusercontent.com',
@@ -32,13 +40,14 @@ passport.use(new GoogleStrategy(
     });
   })
 ));
-//middleware that checks to see if a user has signed in before allowing them to access certain pages.
-const isAuthenticated =  (req, res, next) =>{
+
+// middleware that checks to see if a user has signed in before allowing them to access certain pages.
+const isAuthenticated = (req, res, next) => {
   // if(req.isAuthenticated()){
     return next();
   // }
   // res.redirect('/login');
-}
+};
 
 const app = express();
 app.use(session({ secret: 'anything', resave: false, saveUninitialized: true }));
@@ -63,10 +72,10 @@ passport.deserializeUser(function(id, done){
 
 // returns a bool to see if a user is loggedin or not
 app.get('/check', (req, res) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.send(true);
   } else {
-  res.send(false);
+    res.send(false);
   }
 });
 
@@ -99,12 +108,22 @@ app.get('/test', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
 });
 
-//redirects to google auth page
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+app.get('/itemSearch', (req, res) => {
+  client.itemSearch({
+    keyword: req.query.keyword,
+    responseGroup: 'ItemAttributes,Offers,Imaages',
+  })
+    .then(result => res.send(result))
+    .catch(err => console.log(err));
+});
+
+// redirects to google auth page
+app.get(
+  '/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }),
 );
 
-//redirects to /dashboard on successful login
+// redirects to /dashboard on successful login
 app.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/dashboard',
@@ -112,7 +131,7 @@ app.get('/auth/google/callback',
   }),
 );
 
-//gets user and sends it back to wherever this is called
+// gets user and sends it back to wherever this is called
 app.get('/user', (req, res) => {
   console.log('user', req.user.googleId);
   database.findUser(req.user.googleId).then((user) => {
@@ -189,10 +208,11 @@ app.patch('/trip/items/:id', (req, res) => {
 
 //gets historical weather from worldbank API. Searches by country. Dashboard will need to collect both city and country in order to call both.
 app.get('/weather', (req, res) => {
-  const tripStart = '20170827';
-  const tripEnd = '20170905';
+  // console.log(req.query);
+  const tripStart = req.query.tripStart;
+  const tripEnd = req.query.tripEnd;
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  return isoCode.isoCode('france').then((result) => {
+  return isoCode.isoCode(req.query.country).then((result) => {
     console.log('result in server', result);
     const startMonth = Number(tripStart.slice(4, 6)) - 1;
     const endMonth = Number(tripEnd.slice(4, 6)) - 1;
@@ -204,9 +224,11 @@ app.get('/weather', (req, res) => {
 
 //gets current weather from weather underground. Will need to be fixed depending on city
 app.get('/forecast', (req, res) => {
+  // console.log(req.query);
+  const uri = `http://api.wunderground.com/api/1acaa967ad91ec5b/forecast10day/q/${req.query.country}/${req.query.city}.json`;
   const options = {
     type: 'GET',
-    uri: 'http://api.wunderground.com/api/1acaa967ad91ec5b/forecast10day/q/Uk/london.json',
+    uri,
   };
   rp(options).then(result => result).then((result) => {
     res.body = result;

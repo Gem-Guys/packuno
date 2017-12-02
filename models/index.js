@@ -11,20 +11,20 @@ const db = {};
 // if (config.use_env_variable) {
 //   let sequelize = new Sequelize(process.env[config.use_env_variable]);
 // } else {
-// let sequelize = new Sequelize(config.database, config.username, config.password, {
-//   host: config.host,
-//   dialect: config.dialect,
-//   dialectOptions: {
-//     ssl: true,
-//     native: true,
-//   }
-// });
-
 let sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   dialect: 'postgres',
+  dialectOptions: {
+    ssl: true,
+    native: true,
+  },
 });
-// }
+
+// let sequelize = new Sequelize(config.database, config.username, config.password, {
+//   host: config.host,
+//   dialect: 'postgres',
+// });
+
 
 fs
   .readdirSync(__dirname)
