@@ -7,7 +7,8 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import Search from './Search.jsx';
+
+import Destination from '../containers/Destination.container';
 
 const styles = theme => ({
   root: {
@@ -108,21 +109,19 @@ const styles = theme => ({
 
 class AddTrip extends React.Component {
   state = {
-    destination: '',
     startDate: moment().format('YYYY-MM-DD'),
     endDate: moment().format('YYYY-MM-DD'),
     selectedTrip: null,
   };
 
   onFormSubmit = (e) => {
-    const { destination, startDate, endDate, selectedTrip } = this.state;
+    const { startDate, endDate, selectedTrip } = this.state;
     const { onSubmit, userId } = this.props;
     e.preventDefault();
-
+    let destination = window.store.getState().destination;
     onSubmit(destination, startDate, endDate, selectedTrip, userId);
 
     this.setState({
-      destination: '',
       startDate: '',
       endDate: '',
       selectedTrip: null,
@@ -133,12 +132,10 @@ class AddTrip extends React.Component {
     // debugger;
     const { trips, recentTrips, classes } = this.props;
 
-
     return (
       <div className={classes.root}>
         <h1>Create a new packing list</h1>
         <br />
-        <Search />
         <br />
         <form onSubmit={this.onFormSubmit}>
           <div className={classes.stepHeading}>
@@ -146,14 +143,7 @@ class AddTrip extends React.Component {
             <h3 className={classes.stepTitle}>Where are you going?</h3>
           </div>
           <div className={classes.stepContent}>
-            <TextField
-              id="destination"
-              label="Destination"
-              className={classes.textField}
-              value={this.state.destination}
-              onChange={e => this.setState({ destination: e.target.value })}
-              margin="normal"
-            />
+            <Destination />
           </div>
 
           <div className={classes.stepHeading}>

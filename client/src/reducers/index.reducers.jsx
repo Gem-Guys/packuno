@@ -9,6 +9,7 @@ import editItemMode from './editItemMode.reducers';
 import visibilityFilter from './visibilityFilter.reducers';
 import userId from './user.reducers';
 import isLoggedIn from './login.reducers';
+import destination from './destination.reducers';
 
 const reducer = combineReducers({
   trips,
@@ -28,6 +29,7 @@ const reducer = combineReducers({
   setForecast,
   isLoggedIn,
   userId,
+  destination,
 });
 
 export default reducer;
