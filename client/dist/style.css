@@ -7,7 +7,7 @@
     overflow: auto;
 }
 
-#content { 
+#content {
     overflow: auto;
     position: absolute;
     margin-left: 25%;
@@ -66,8 +66,8 @@ h2 {
   font-size: 15px;
 }
 
-#upcoming ul li { 
-  padding: 15px 0px; 
+#upcoming ul li {
+  padding: 15px 0px;
 }
 
 #menu {
@@ -117,4 +117,11 @@ h2 {
 
 .changeHover: hover {
    background: grey;
+}
+
+
+.react-autosuggest__suggestions-list
+{
+  height: 200px;
+  overflow-y: auto;
 }
