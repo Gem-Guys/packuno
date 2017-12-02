@@ -8,6 +8,8 @@ import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 
+import Destination from '../containers/Destination.container';
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -107,21 +109,19 @@ const styles = theme => ({
 
 class AddTrip extends React.Component {
   state = {
-    destination: '',
     startDate: moment().format('YYYY-MM-DD'),
     endDate: moment().format('YYYY-MM-DD'),
     selectedTrip: null,
   };
 
   onFormSubmit = (e) => {
-    const { destination, startDate, endDate, selectedTrip } = this.state;
+    const { startDate, endDate, selectedTrip } = this.state;
     const { onSubmit, userId } = this.props;
     e.preventDefault();
-
+    let destination = window.store.getState().destination;
     onSubmit(destination, startDate, endDate, selectedTrip, userId);
 
     this.setState({
-      destination: '',
       startDate: '',
       endDate: '',
       selectedTrip: null,
@@ -129,13 +129,13 @@ class AddTrip extends React.Component {
   };
 
   render = () => {
+    // debugger;
     const { trips, recentTrips, classes } = this.props;
-
 
     return (
       <div className={classes.root}>
         <h1>Create a new packing list</h1>
-        <a href="/test">Click ME</a>
+        <br />
         <br />
         <form onSubmit={this.onFormSubmit}>
           <div className={classes.stepHeading}>
@@ -143,14 +143,7 @@ class AddTrip extends React.Component {
             <h3 className={classes.stepTitle}>Where are you going?</h3>
           </div>
           <div className={classes.stepContent}>
-            <TextField
-              id="destination"
-              label="Destination"
-              className={classes.textField}
-              value={this.state.destination}
-              onChange={e => this.setState({ destination: e.target.value })}
-              margin="normal"
-            />
+            <Destination />
           </div>
 
           <div className={classes.stepHeading}>
@@ -162,7 +155,7 @@ class AddTrip extends React.Component {
               id="start_date"
               label="Departure Date"
               type="date"
-              value={this.state.startDate}  
+              value={this.state.startDate}
               onChange={e => this.setState({ startDate: e.target.value })}
               className={classes.textField}
               InputLabelProps={{
@@ -173,7 +166,7 @@ class AddTrip extends React.Component {
               id="end_date"
               label="Return Date"
               type="date"
-              value={this.state.endDate}  
+              value={this.state.endDate}
               onChange={e => this.setState({ endDate: e.target.value })}
               className={classes.textField}
               InputLabelProps={{
