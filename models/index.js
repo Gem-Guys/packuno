@@ -11,6 +11,15 @@ const db = {};
 // if (config.use_env_variable) {
 //   let sequelize = new Sequelize(process.env[config.use_env_variable]);
 // } else {
+// let sequelize = new Sequelize(config.database, config.username, config.password, {
+//   host: config.host,
+//   dialect: config.dialect,
+//   dialectOptions: {
+//     ssl: true,
+//     native: true,
+//   },
+// });
+
 let sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   dialect: 'postgres',
@@ -24,7 +33,7 @@ let sequelize = new Sequelize(config.database, config.username, config.password,
 fs
   .readdirSync(__dirname)
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-  .forEach((file) => { 
+  .forEach((file) => {
     let model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });

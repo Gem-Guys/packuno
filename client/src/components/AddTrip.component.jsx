@@ -129,6 +129,7 @@ class AddTrip extends React.Component {
   };
 
   render = () => {
+    // debugger;
     const { trips, recentTrips, classes } = this.props;
 
     return (
