@@ -124,7 +124,7 @@ const suggestions = [
 
 function renderInput(inputProps) {
   const { classes, autoFocus, value, ref, ...other } = inputProps;
-  console.log('im the inputProps', inputProps);
+  // console.log('im the inputProps', inputProps);
 
   return (
     <TextField
@@ -145,9 +145,9 @@ function renderInput(inputProps) {
 function renderSuggestion(suggestion, { query, isHighlighted }) {
   const matches = match(suggestion.label, query);
   const parts = parse(suggestion.label, matches);
-  console.log('this is the query', query);
-  console.log('this is the matches', matches);
-  console.log('this.is the parts', parts)
+  // console.log('this is the query', query);
+  // console.log('this is the matches', matches);
+  // console.log('this.is the parts', parts)
   return (
     <MenuItem selected={isHighlighted} component="div">
       <div>
@@ -182,7 +182,6 @@ function getSuggestionValue(suggestion) {
 }
 
 function getSuggestions(value) {
-  debugger;
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
   let count = 0;
@@ -252,16 +251,18 @@ class Search extends React.Component {
   handleChange = (event, { newValue }) => {
     console.log('im the event', event);
     console.log('im the new value', newValue);
-    this.setState({
-      value: newValue,
-    });
+    console.log('im the props', this.props);
+    this.props.Destination(newValue);
+    // this.setState({
+    //   value: newValue,
+    // });
   };
 
   render() {
     const { classes } = this.props;
-
+    console.log('this is props', this.props)
     return (
-      <Autosuggest className="react-autosuggest_suggestions-list"
+      <Autosuggest
         theme={{
           container: classes.container,
           suggestionsContainerOpen: classes.suggestionsContainerOpen,
@@ -279,7 +280,7 @@ class Search extends React.Component {
           autoFocus: true,
           classes,
           placeholder: 'Search a country',
-          value: this.state.value,
+          value: this.props.destination,
           onChange: this.handleChange,
         }}
       />
