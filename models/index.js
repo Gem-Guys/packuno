@@ -17,16 +17,12 @@ const db = {};
 //   dialectOptions: {
 //     ssl: true,
 //     native: true,
-//   },
+//   }
 // });
 
 let sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   dialect: 'postgres',
-  dialectOptions: {
-    ssl: true,
-    native: true,
-  },
 });
 // }
 
