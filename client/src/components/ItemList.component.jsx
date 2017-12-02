@@ -36,6 +36,7 @@ class ItemList extends React.Component {
               onItemClick={onItemClick}
               onDeleteClick={onDeleteClick}
               onEditClick={onEditClick}
+              key={category}
             />
           ))}
         </List>

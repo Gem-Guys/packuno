@@ -7,8 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import packunoApp from './reducers/index.reducers.jsx';
 import Weather from './containers/Weather.container.jsx';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import lightBlue from 'material-ui/colors/lightBlue';
-import lime from 'material-ui/colors/lime';
+import { lightBlue, lime, white } from 'material-ui/colors';
 import thunk from 'redux-thunk';
 import reducer from './reducers/index.reducers';
 import seedState from './seedState';
@@ -32,6 +31,7 @@ const theme = createMuiTheme({
   palette: {
     primary: lightBlue,
     secondary: lime,
+    canvasColor: lightBlue,
   },
   status: {
     danger: 'orange',

@@ -17,11 +17,10 @@ export class AppContainer extends React.Component {
       return (
           <Router>
           <div>
-            <Route path="/" component={Jeff} >
+            <Route path="/" component={Trip} />
             <Route path="/test" render={ () => <Weather /> } />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/login" component={LoginCont} />
-            </Route>
           </div>
         </Router>
       );
