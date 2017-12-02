@@ -83,6 +83,12 @@ export const tripsFetchData = (userId) => (dispatch) => {
     .catch(() => dispatch(tripsHasErrored(true)));
 };
 
+// Update current trip
+
+export const updateCurrentTrip = tripId => ({
+  type: 'UPDATE_CURRENT_TRIP',
+  tripId,
+});
 
 // Add trip
 
@@ -102,7 +108,10 @@ export const addTrip = (destination, startDate, endDate, oldTripId, userId) => (
         endDate,
         oldTripId,
         userId,
-      });
+      })
+        .then(() => {
+          dispatch(updateCurrentTrip(response.data.id));
+        });
 
       if (oldTripId) {
         axios.post('/trips/items', {
@@ -113,10 +122,3 @@ export const addTrip = (destination, startDate, endDate, oldTripId, userId) => (
       }
     });
 };
-
-// Update current trip
-
-export const updateCurrentTrip = tripId => ({
-  type: 'UPDATE_CURRENT_TRIP',
-  tripId,
-});

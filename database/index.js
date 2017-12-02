@@ -9,7 +9,7 @@ db.sequelize.authenticate().then(() => {
   console.log(err);
 });
 
-// db.sequelize.sync({force:true});
+db.sequelize.sync({force:true});
 //uncomment above to drop tables on npm run server or npm start scripts.
 //It drops tables because sync() recreates the tables everytime the
 //server is run. So to prevent dropping tables each time but you want tables

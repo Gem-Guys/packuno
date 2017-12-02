@@ -20,9 +20,10 @@ export const setHistorical = historicalArray => ({
 
 export const setHistoricalAsync = () => (dispatch, getState) => {
   const state = getState();
+  console.log('---------------------', state);
   const options = {
     type: 'GET',
-    uri: 'http://localhost:4000/weather',
+    uri: 'http://localhost:3000/weather',
     qs: {
       tripStart: state.trips.byId[state.currentTripId].departureDate.replace(/-/gi, ''),
       tripEnd: state.trips.byId[state.currentTripId].returnDate.replace(/-/gi, ''),
@@ -51,7 +52,7 @@ export const setForecastAsync = () => (dispatch, getState) => {
   }
   const options = {
     type: 'GET',
-    uri: 'http://localhost:4000/forecast',
+    uri: 'http://localhost:3000/forecast',
     qs: {
       country,
       city: destination[0],

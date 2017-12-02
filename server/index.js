@@ -16,7 +16,7 @@ const { aws } = require('../config/config.json');
 const database = require('../database/index.js');
 const path = require('path');
 const pg = require('pg');
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -43,10 +43,10 @@ passport.use(new GoogleStrategy(
 
 // middleware that checks to see if a user has signed in before allowing them to access certain pages.
 const isAuthenticated = (req, res, next) => {
-  // if(req.isAuthenticated()){
+  if(req.isAuthenticated()){
     return next();
-  // }
-  // res.redirect('/login');
+  }
+  res.redirect('/login');
 };
 
 const app = express();
@@ -126,7 +126,7 @@ app.get(
 // redirects to /dashboard on successful login
 app.get('/auth/google/callback',
   passport.authenticate('google', {
-    successRedirect: '/dashboard',
+    successRedirect: '/',
     failureRedirect: '/login',
   }),
 );
