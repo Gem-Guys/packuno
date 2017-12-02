@@ -169,14 +169,16 @@ const styles = theme => ({
   container: {
     flexGrow: 1,
     position: 'relative',
-    height: 50,
+    height: 80,
   },
   suggestionsContainerOpen: {
     position: 'absolute',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit * .1,
     marginBottom: theme.spacing.unit * 3,
     left: 0,
     right: 0,
+    overflowY: 'auto',
+    zIndex: 100,
   },
   suggestion: {
     display: 'block',
@@ -191,7 +193,7 @@ const styles = theme => ({
     marginRight: 20,
     marginBottom: 20,
     marginTop: 20,
-    width: 200,
+    width: 250,
   },
 });
 
@@ -244,7 +246,7 @@ class Search extends React.Component {
         inputProps={{
           autoFocus: true,
           classes,
-          placeholder: 'Search a country',
+          placeholder: 'Search a destination',
           value: this.props.destination,
           onChange: this.handleChange,
         }}

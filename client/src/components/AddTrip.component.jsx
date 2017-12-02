@@ -7,7 +7,6 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-
 import Destination from '../containers/Destination.container';
 
 const styles = theme => ({

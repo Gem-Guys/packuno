@@ -23,7 +23,7 @@ export const itemsFetchDataSuccess = (data) => {
   data.forEach((tripItem) => {
     console.log(tripitem);
     const { id, Item, packed, quantity, itemId } = tripItem;
- 
+
     items.byId[id] = {
       id,
       item: Item.item,
@@ -71,12 +71,12 @@ export const addItem = (item, category, quantity, userId, tripId) => (dispatch) 
     .then((response) => {
       dispatch({
         type: 'ADD_ITEM_SUCCESS',
-        id: response.id,
+        id: response.data.id,
         item,
         category,
         quantity,
         packed: false,
-        itemId: response.itemId,
+        itemId: response.data.itemId,
       });
     });
 };
