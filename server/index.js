@@ -9,6 +9,8 @@ const passport = require('passport');
 const Promise = require('bluebird');
 const itemsHelper = require('../database/itemsHelpers');
 const tripsHelper = require('../database/tripsHelpers');
+const amazon = require('amazon-product-api');
+const { aws } = require('../config/config.json');
 
 // FILL IN DATABASE FILE -->
 const database = require('../database/index.js');
@@ -18,7 +20,13 @@ const port = process.env.PORT || 4000;
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-//google OAuth using passport
+const client = amazon.createClient({
+  awsId: aws.id,
+  awsSecret: aws.secret,
+  awsTag: aws.tag,
+});
+
+// google OAuth using passport
 passport.use(new GoogleStrategy(
   {
     clientID: '701084384568-cfgkqkmh3th8usnokt4aqle9am77ei0f.apps.googleusercontent.com',
@@ -32,13 +40,19 @@ passport.use(new GoogleStrategy(
     });
   })
 ));
+<<<<<<< f169eac25d0d9d095cf30d6266eef5aa06377349
 //middleware that checks to see if a user has signed in before allowing them to access certain pages.
 const isAuthenticated =  (req, res, next) =>{
+=======
+
+// middleware that checks to see if a user has signed in before allowing them to access certain pages.
+const isAuthenticated = (req, res, next) => {
+>>>>>>> rebase
   // if(req.isAuthenticated()){
     return next();
   // }
   // res.redirect('/login');
-}
+};
 
 const app = express();
 app.use(session({ secret: 'anything', resave: false, saveUninitialized: true }));
@@ -63,10 +77,10 @@ passport.deserializeUser(function(id, done){
 
 // returns a bool to see if a user is loggedin or not
 app.get('/check', (req, res) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.send(true);
   } else {
-  res.send(false);
+    res.send(false);
   }
 });
 
@@ -99,12 +113,31 @@ app.get('/test', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
 });
 
+<<<<<<< f169eac25d0d9d095cf30d6266eef5aa06377349
 //redirects to google auth page
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
 //redirects to /dashboard on successful login
+=======
+app.get('/itemSearch', (req, res) => {
+  client.itemSearch({
+    keyword: req.query.keyword,
+    responseGroup: 'ItemAttributes,Offers,Imaages',
+  })
+    .then(result => res.send(result))
+    .catch(err => console.log(err));
+});
+
+// redirects to google auth page
+app.get(
+  '/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }),
+);
+
+// redirects to /dashboard on successful login
+>>>>>>> rebase
 app.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/dashboard',
@@ -112,7 +145,7 @@ app.get('/auth/google/callback',
   }),
 );
 
-//gets user and sends it back to wherever this is called
+// gets user and sends it back to wherever this is called
 app.get('/user', (req, res) => {
   console.log('user', req.user.googleId);
   database.findUser(req.user.googleId).then((user) => {

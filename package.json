@@ -27,6 +27,7 @@
     "node": ">=6.4.0"
   },
   "dependencies": {
+    "amazon-product-api": "^0.4.4",
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
