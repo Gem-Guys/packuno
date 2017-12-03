@@ -53,6 +53,13 @@ class AddItemForm extends React.Component {
     const { onSubmit, onEditSubmit, exitEditItemMode, itemToEdit, tripId, userId } = this.props;
     e.preventDefault();
 
+
+
+
+
+
+
+
     if (itemToEdit) {
       onEditSubmit(itemToEdit.id, itemInput, categoryInput, quantityInput, itemToEdit.itemId);
       exitEditItemMode();

@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import Activity from './Activity.component';
 import Templates from '../../../database/templateSeed.json';
 import List from 'material-ui/List';
+import Item from './Item.component';
 
 class TripFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activities: Object.keys(Templates)
+      activities: Object.keys(Templates),
+      selected: [],
       // activities: [
       //   {
       //     activity: 'Fine Dining',
@@ -41,13 +43,14 @@ class TripFilter extends Component {
   }
 
   handleFormSubmit(event) {
-    console.log('im the event', event);
-    // event.preventDefault();
+    event.preventDefault();
+    const activityList = [];
     for (const box of this.selectedBox) {
-      console.log(box, 'is selected');
+      activityList.push(box);
     }
+    console.log('activityList', activityList);
+    this.setState({selected: activityList}, )
   }
-
 
   render(){
     return (
@@ -60,6 +63,9 @@ class TripFilter extends Component {
           })}
           <button type='submit'>Enter</button>
         </form>
+        {this.state.selected.map(category => {
+          return <Item category={category} key={category} />
+        })}
       </div>
     )
   }
