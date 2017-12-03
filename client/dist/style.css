@@ -25,6 +25,12 @@ body {
     font-family: 'Roboto', sans-serif;
     height: 100%;
 }
+
+@keyframes countryColor {
+  0% { opacity: 0;}
+  100% { opacity: 1; }
+}
+
 /*
 h2 {
   font-size: 20px;
