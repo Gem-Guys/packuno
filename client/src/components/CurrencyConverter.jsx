@@ -53,30 +53,29 @@ class CurrencyConverter extends React.Component {
   }
   getRate(amount = 100, fromCurrency = 'USD', toCurrency = 'EUR') {
     axios.get('https://api.fixer.io/latest?base=USD')
-    .then(data => {
-      fx.base = data.data.base;
-      fx.rates = data.data.rates;
-      return data.data.rates;
-    })
-    .then((rates) => {
-      const foreignAmount = fx.convert(amount, {
-        from: fromCurrency, 
-        to: toCurrency}).toFixed(2);
-        let countries = [];
-      
-        for (var country in rates) {
-          countries.push(country);
-        }
-      this.setState({
-        fromAmount: amount,
-        toAmount: foreignAmount,
-        countries: countries
-      }, () => {
-        this.setState({
-          actualConversion: `${this.state.fromAmount} ${this.state.fromCurrency} = ${this.state.toAmount} ${this.state.toCurrency}`
-        })
+      .then((data) => {
+        fx.base = data.data.base;
+        fx.rates = data.data.rates;
+        return data.data.rates;
       })
-    })
+      .then((rates) => {
+        const foreignAmount = fx.convert(amount, {
+          from: fromCurrency,
+          to: toCurrency,
+        }).toFixed(2);
+        const countries = Object.keys(rates);
+      
+  
+        this.setState({
+          fromAmount: amount,
+          toAmount: foreignAmount,
+          countries: countries,
+        }, () => {
+          this.setState({
+            actualConversion: `${this.state.fromAmount} ${this.state.fromCurrency} = ${this.state.toAmount} ${this.state.toCurrency}`,
+          });
+        });
+      });
   }
   updateParentState(stateName, value) {
     this.setState({
@@ -87,7 +86,8 @@ class CurrencyConverter extends React.Component {
       let isoCode = '';
       country = country.split(',');
       country = country[country.length - 1].slice(1) || 'Canada'
-      isoCode = countries.getCode(country) || 'CA';
+      isoCode = country === 'Russia' ? countries.getCode('Russian Federation') : countries.getCode(country) || 'CA';
+      console.log(country.split(''))
       this.setState({
         toCurrency: currency[isoCode],
         countryName: country,

@@ -54,7 +54,7 @@ class TravelInformation extends React.Component {
     let country = window.store.getState().destination;
     country = country.split(',');
     country = country[country.length - 1].slice(1);
-    isoCode = countries.getCode(country) || 'CA';
+    isoCode = country === 'Russia' ? countries.getCode('Russian Federation') : countries.getCode(country) || 'CA';
     this.setState({
       isoCode,
     }, () => {
