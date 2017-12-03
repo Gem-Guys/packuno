@@ -11,7 +11,7 @@ const styles = theme => ({
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
-    width: 600,
+    width: '100%',
   }),
 });
 
@@ -19,7 +19,7 @@ const Weather = (props) => {
 
   const renderWeather = () => {
     if (props.weatherFilter === 'SHOW_HISTORICAL') {
-      return (<Historical weather={props.historical} />);
+      return (<Historical  weather={props.historical} />);
     }
     if (props.weatherFilter === 'SHOW_CURRENT') {
       return <Forecast weather={props.forecast} />;
@@ -38,7 +38,7 @@ const Weather = (props) => {
 
   const { classes } = props;
   return (
-    <Paper className={classes.root} elevation={4}>
+    <Paper className={classes.root} elevation={4} >
       <h2>Weather</h2>
       <Button onClick={(e) => { changeWeather(e, 'current'); }} type="submit" name="SHOW_CURRENT" flat color="primary" >
       Forecast
