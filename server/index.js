@@ -14,7 +14,7 @@ const tripsHelper = require('../database/tripsHelpers');
 const database = require('../database/index.js');
 const path = require('path');
 const pg = require('pg');
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
