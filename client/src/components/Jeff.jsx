@@ -3,6 +3,7 @@ import AddTrip from '../containers/AddTrip.container';
 import Weather from '../containers/Weather.container';
 import TravelInformation from './TravelInformation.jsx';
 import CurrencyConverter from './CurrencyConverter.jsx';
+import CountryConditions from './CountryConditions.component';
 
 const addTripStyle = {
   display: 'inline-block',
@@ -21,7 +22,10 @@ const Jeff = () => (
       <TravelInformation />
     </div>
     <Weather />
+    <CountryConditions />
   </div>
 );
 
 export default Jeff;
+
+
