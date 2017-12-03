@@ -12,8 +12,8 @@ import Weather from '../containers/Weather.container';
 export class AppContainer extends React.Component {
 
   render() {
-    console.log('this.props in app component', this.props);
-    if (this.props.isLoggedIn) {
+    // console.log('this.props in app component', this.props);
+    // if (this.props.isLoggedIn) {
       return (
           <Router>
           <div>
@@ -24,12 +24,12 @@ export class AppContainer extends React.Component {
           </div>
         </Router>
       );
-    }
-    else {
-      return (
-        <LoginCont />
-      );
-    }
+    // }
+    // else {
+    //   return (
+    //     <LoginCont />
+    //   );
+    // }
   }
 }
 
