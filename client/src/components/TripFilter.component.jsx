@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Activity from './Activity.component';
 import Templates from '../../../database/templateSeed.json';
 import List from 'material-ui/List';
-import Item from './Item.component';
+import { AddRecommended } from '../containers/AddItem.container';
 
 class TripFilter extends Component {
   constructor(props) {
@@ -64,7 +64,7 @@ class TripFilter extends Component {
           <button type='submit'>Enter</button>
         </form>
         {this.state.selected.map(category => {
-          return <Item category={category} key={category} />
+          return <AddRecommended category={category} key={category} />
         })}
       </div>
     )

@@ -44,6 +44,11 @@ const ItemsByCat = ({ items, category, onItemClick, onDeleteClick, onEditClick, 
                 <DeleteIcon />
               </IconButton>
             </ListItemSecondaryAction>
+            <div>
+              <button>-</button>
+                <span id='counter'>0</span>
+              <button>+</button>
+            </div>
           </ListItem>
           ))}
       </div>
