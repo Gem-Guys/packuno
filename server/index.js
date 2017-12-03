@@ -122,13 +122,13 @@ app.get('/amazon', (req, res) => {
     Keywords: req.query.query,
     ResponseGroup: 'ItemAttributes,Images',
   }).then((response) => {
-    console.log('Results object: ', response.result);
-    console.log('Raw response body: ', response.responseBody);
+    // console.log('Results object: ', response.result.ItemSearchResponse.Items.Item);
+    // console.log('Raw response body: ', response.responseBody);
     const data = response.result.ItemSearchResponse.Items.Item.map(item => ({
       url: item.DetailPageURL,
-      image: item.LargeImage,
-      name: item.Title,
-      // price: item.ListPrice.FormattedPrice,
+      image: item.LargeImage.URL,
+      name: item.ItemAttributes.Title,
+      qprice: item.ItemAttributes.ListPrice.FormattedPrice,
     }));
     res.send(data);
   }).catch((err) => {

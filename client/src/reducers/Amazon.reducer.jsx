@@ -1,4 +1,4 @@
-const amazonData = (state = '', action) => {
+const amazonData = (state = [], action) => {
   if (action.type === 'SET_AMAZON_DATA') {
     return action.data;
   }

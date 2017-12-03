@@ -1,14 +1,8 @@
 import React from 'react';
 
 class Amazon extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      amazonData: this.props.amazonData,
-    };
-  }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getAmazonItems('water-bottle');
   }
 
@@ -16,12 +10,18 @@ class Amazon extends React.Component {
     return (
       <div>
         <h1>Hello</h1>
-        <h1>{this.props.amazonData}</h1>
-        {console.log(this.props.amazonData)}
+        {console.log(this.props)}
+        {this.props.amazon.map(item => (
+          <div className="product">
+            <ul>{item.name}</ul>
+            <img src={item.image}></img>
+            <ul>{item.price}</ul>
+          </div>
+        ))
+      }
       </div>
     );
   }
 }
 
 export default Amazon;
-

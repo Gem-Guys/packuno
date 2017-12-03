@@ -4,7 +4,7 @@ import { retrieveAmazonAsync } from '../actions/Amazon.actions';
 
 
 const mapStateToProps = state => ({
-  amazonData: state.amazonData,
+  amazon: state.amazon,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -14,8 +14,8 @@ const retrieveAmazonAsync = query => (dispatch) => {
   };
   const AmazonItems = rp(options);
   return AmazonItems.then((result) => {
-    console.log('api results ------>', result);
-    dispatch(setAmazonData(result));
+    // console.log('api results ------>', result);
+    dispatch(setAmazonData(JSON.parse(result)));
   });
 };
 
