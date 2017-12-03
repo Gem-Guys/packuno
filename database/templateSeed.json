@@ -13,12 +13,12 @@
     "Passport", "Visa(Immigration)", "Vaccination Certificates", "Power Adapter", "Power Transformer", "Foreign Currency", "Medical Insurance Card"
   ],
   "Running": [
-    "Running Headphones", "Music Player", "running Shirt", "Running Shorts", "Running Socks", "Running Shoes"
+    "Running Headphones", "Music Player", "Running Shirt", "Running Shorts", "Running Socks", "Running Shoes"
   ],
   "Beach": [
     "Beach Towel", "Sandals", "Hat", "Sunscreen", "Sunglasses", "Swimsuit", "Goggles"
   ],
-  "Hiking": [ 
+  "Hiking": [
     "Handheld GPS", "Compass", "First Aid Kit", "Bug Spray", "Sunscreen", "Hat", "Water Bottle", "Sunglasses", "Socks(Non-cotton)", "Pants(Non-cotton)", "Shirts(Non-cotton)", "Hiking Shoes"
   ]
 }

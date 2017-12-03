@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Footer from './Footer.component';
-import AddItem from '../containers/AddItem.container';
+import { AddItem } from '../containers/AddItem.container';
 import VisibleItemList from '../containers/VisibleItemList.container';
 import WeatherCont from '../containers/Weather.container';
 import TripFilter from './TripFilter.component';
