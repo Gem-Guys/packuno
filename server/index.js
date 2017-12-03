@@ -12,7 +12,7 @@ const tripsHelper = require('../database/tripsHelpers');
 const amazon = require('amazon-product-api');
 const { aws } = require('../config/config.json');
 
-// FILL IN DATABASE FILE -->
+// FILL IN DATABASE FILE ->
 const database = require('../database/index.js');
 const path = require('path');
 const pg = require('pg');

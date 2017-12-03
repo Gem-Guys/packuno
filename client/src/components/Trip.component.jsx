@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
-import Footer from '../components/Footer.component';
+import Footer from './Footer.component';
 import AddItem from '../containers/AddItem.container';
 import VisibleItemList from '../containers/VisibleItemList.container';
 import WeatherCont from '../containers/Weather.container';
+import TripFilter from './TripFilter.component';
 
 
 const styles = theme => ({
@@ -24,7 +25,10 @@ const Trip = (props) => {
 
   return (
   <div>
-    <Paper className={classes.root} elevation={4}>
+    <Paper className={classes.root} elevation={7}>
+      <TripFilter />
+    </Paper>
+    <Paper className={classes.root} elevation={7}>
       <AddItem />
       <VisibleItemList />
       <Footer />
