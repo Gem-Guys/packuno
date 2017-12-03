@@ -15,7 +15,8 @@ class Amazon extends React.Component {
           <div className="product">
             <ul>{item.name}</ul>
             <img src={item.image}></img>
-            <ul>{item.price}</ul>
+            <ul>{item.qprice}</ul>
+            <button className="amazonbutton" onClick={() => { window.open(item.url, '_blank'); }} >Shop</button>
           </div>
         ))
       }
