@@ -10,6 +10,7 @@ import visibilityFilter from './visibilityFilter.reducers';
 import userId from './user.reducers';
 import isLoggedIn from './login.reducers';
 import destination from './destination.reducers';
+import amazon from './Amazon.reducer';
 
 const reducer = combineReducers({
   trips,
@@ -30,6 +31,7 @@ const reducer = combineReducers({
   isLoggedIn,
   userId,
   destination,
+  amazon,
 });
 
 export default reducer;

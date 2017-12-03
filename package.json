@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "amazon-product-api": "^0.4.4",
+    "apac": "^3.0.2",
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
