@@ -3,6 +3,7 @@ import AddItemForm from '../components/AddItemForm.component';
 import { addItem, editItem } from '../actions/items.actions';
 import { exitEditItemMode } from '../actions/editMode.actions';
 import { userItemsFetchData } from '../actions/userItems.actions';
+import Item from '../components/Item.component';
 
 const getItemToEdit = (state) => {
   if (state.editItemMode.inEditMode) {
@@ -41,4 +42,10 @@ const AddItem = connect(
   mapDispatchToProps,
 )(AddItemForm);
 
-export default AddItem;
+const AddRecommended = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Item);
+
+module.exports.AddRecommended = AddRecommended;
+module.exports.AddItem = AddItem;
