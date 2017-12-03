@@ -14,7 +14,7 @@ const dashboardStyle = {
 };
 const Jeff = () => (
   <div>
-    <div  style={addTripStyle}>
+    <div style={addTripStyle}>
       <AddTrip />
     </div>
     <div style={dashboardStyle}>
@@ -27,5 +27,3 @@ const Jeff = () => (
 );
 
 export default Jeff;
-
-

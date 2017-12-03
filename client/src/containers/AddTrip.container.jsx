@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AddTrip from '../components/AddTrip.component';
-import { addTrip, updateCurrentTrip } from '../actions/trips.actions';
+import { addTrip, updateCurrentTrip, destinationAction } from '../actions/trips.actions';
 import { setHistoricalAsync as Historical, setForecastAsync as Forecast } from '../actions/weather.actions';
 
 const getRecent5Trips = state => (
@@ -21,6 +21,9 @@ const mapDispatchToProps = dispatch => ({
     //     dispatch(Historical());
     //   });
     // dispatch(Forecast());
+  },
+  Destination: (destination) => {
+    dispatch(destinationAction(destination));
   },
 });
 

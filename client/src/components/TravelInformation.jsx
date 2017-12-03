@@ -60,17 +60,17 @@ class TravelInformation extends React.Component {
     }, () => {
       if (this.state.countryData) {
         const dataArr = this.state.countryData;
-        let country = dataArr.filter(country => {
+        let country = dataArr.filter((country) => {
           if (country.iso_code) {
             return country.iso_code === this.state.isoCode;
-            } 
+          } 
         })[0];
         if (!country) {
-          country = dataArr.filter(country => {
+          country = dataArr.filter((country) => {
             return country.tag === this.state.isoCode;
           })[0];
         }
-        console.log(country)
+        console.log(country);
         this.setState({
           info: country[subData],
           selectedData: subData,

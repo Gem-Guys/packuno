@@ -24,3 +24,4 @@ const mapDispatchToProps = dispatch => ({
 
 const Destination = connect(mapStateToProps, mapDispatchToProps)(Search);
 export default Destination;
+

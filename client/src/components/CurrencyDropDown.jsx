@@ -48,7 +48,7 @@ handleChange(e) {
 
 
   render() {
-    const dropDownItems = this.state.dropDownItems ? this.state.dropDownItems : ''
+    const dropDownItems = this.state.dropDownItems ? this.state.dropDownItems : '';
     return (
       <Select value={this.state.value} onChange={this.handleChange.bind(this)}>
        {dropDownItems}
