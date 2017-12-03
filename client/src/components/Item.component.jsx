@@ -11,6 +11,9 @@ class Item extends Component {
 
   handleClick(category, item) {
     // console.log('item', item, 'category', category);
+    const { onSubmit, tripId, userId } = this.props;
+    onSubmit(item, category || 'Other', null, tripId, userId);
+    console.log(this.props);
     console.log('category: ', category, 'item: ', item);
   }
 
@@ -23,7 +26,7 @@ class Item extends Component {
         {Template[category].map((item) => {
           console.log('im the thing', item);
           return (
-            <div>
+            <div key={item}>
               <span>{item}</span>
               <Button color="primary" onClick={() => this.handleClick(category, item)}>Add</Button>
             </div>
