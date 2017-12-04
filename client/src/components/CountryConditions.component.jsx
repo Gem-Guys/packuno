@@ -16,6 +16,7 @@ class CountryConditions extends Component {
       dataByCountry: {},
       mouseOverCountry: '',
       mouseOverCountryCondition: '',
+      selectedCountry: '',
     }
   }
 
@@ -37,10 +38,12 @@ class CountryConditions extends Component {
       }
       return acc;
     }, {});
-
+    let countryName = window.store.getState().destination.split(',');
+    countryName = countryName[countryName.length - 1].slice(1)
     this.setState({
       worldData,
       dataByCountry,
+      selectedCountry: countryName
     });
   }
 

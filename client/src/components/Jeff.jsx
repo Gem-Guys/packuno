@@ -29,5 +29,3 @@ const Jeff = () => (
 );
 
 export default Jeff;
-
-

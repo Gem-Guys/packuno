@@ -130,7 +130,6 @@ class AddTrip extends React.Component {
   render = () => {
     // debugger;
     const { trips, recentTrips, classes } = this.props;
-
     return (
       <div className={classes.root}>
         <h1>Create a new packing list</h1>
@@ -192,7 +191,13 @@ class AddTrip extends React.Component {
               {recentTrips.map(tripId => (
                 <div
                   key={tripId}
-                  onClick={() => this.setState({ selectedTrip: tripId })}
+                  onClick={() => {
+                    this.setState({ 
+                      selectedTrip: tripId 
+                      })
+                     const destination = window.store.getState().trips.byId[tripId].destination;
+                     this.props.Destination(destination);
+                    }}
                   className={(this.state.selectedTrip === tripId) ? classes.selectedTripBox : classes.tripBox}
                 >
                   <img src={ trips.byId[tripId].photoUrl} className={classes.photo} />

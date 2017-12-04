@@ -122,3 +122,9 @@ export const addTrip = (destination, startDate, endDate, oldTripId, userId) => (
       }
     });
 };
+
+// Add country name to redux store
+export const destinationAction = destination => ({
+  type: "UPDATE_DESTINATION",
+  destination: destination,
+});
