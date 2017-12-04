@@ -33,9 +33,9 @@ const ItemsByCat = ({ items, category, onItemClick, onDeleteClick, onEditClick, 
               <ListItemText primary={(item.quantity) ? `${item.quantity} ${item.item}` : item.item} />
               <ListItemSecondaryAction >
               <IconButton
-                  aria-label="Edit"
-                  onClick={() => onEditClick(item.id)}
-                >
+                aria-label="Edit"
+                onClick={() => onEditClick(item.id)}
+              >
                   <EditIcon />
                 </IconButton>
                 <IconButton
