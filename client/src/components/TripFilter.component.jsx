@@ -40,7 +40,7 @@ class TripFilter extends Component {
   render() {
     return (
       <div>
-        Activities
+        <h2>Recommended Items</h2>
 
         <form onSubmit={this.handleFormSubmit}>
           {this.state.activities.map(activity => (

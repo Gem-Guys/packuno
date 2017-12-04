@@ -20,6 +20,7 @@ import ChevronRightIcon from 'material-ui-icons/ChevronRight';
 import Trip from '../components/Trip.component';
 import Dashboard from '../components/Dashboard.component';
 import App from '../components/App.components';
+// import image from '../../../image/untitled.jpg';
 
 const drawerWidth = 240;
 
@@ -169,7 +170,7 @@ class AppMenu extends React.Component {
               onClick={() => this.handleTripClick(tripId)}
               className={classes.tripBox}
             >
-              <img src={ trips.byId[tripId].photoUrl} className={classes.photo} />
+              <img src={"https://images1.laweekly.com/imager/u/745xauto/8299888/29roadtripsintro1-1-62e5ee91e4ff2612.jpg"} className={classes.photo} />
               <h4>{ trips.byId[tripId].destination }</h4>
               <span>{moment(trips.byId[tripId].startDate).format('MMMM YYYY')}</span>
             </div>
