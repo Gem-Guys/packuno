@@ -36,13 +36,13 @@ const ItemsByCat = ({ items, category, onItemClick, onDeleteClick, onEditClick, 
                 aria-label="Edit"
                 onClick={() => onEditClick(item.id)}
               >
-                  <EditIcon />
+                <EditIcon className={classes.edit}/>
                 </IconButton>
                 <IconButton
                   aria-label="Delete"
                   onClick={() => onDeleteClick()}
                 >
-                  <DeleteIcon />
+                <DeleteIcon className={classes.delete}/>
                 </IconButton>
               </ListItemSecondaryAction>
               <Button className={classes.button} onClick={() => retrieveAmazonAsync(item.item)}>Shop</Button>

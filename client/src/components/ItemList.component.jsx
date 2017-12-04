@@ -5,15 +5,22 @@ import List from 'material-ui/List';
 import ItemsByCat from '../components/ItemsByCat.component';
 
 const styles = theme => ({
-  root: {
-    width: '100%',
-    maxWidth: 700,
+  container: {
+    width: 400,
+    display: 'flex',
+    flexWrap: 'wrap',
     background: theme.palette.background.paper,
   },
   button: {
-    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit * 10,
     display: 'inline-block',
   },
+  icon: {
+    marginLeft: theme.spacing.unit,
+  },
+  edit: {
+    marginLeft: theme.spacing.unit,
+  }
 });
 
 class ItemList extends React.Component {
@@ -31,7 +38,7 @@ class ItemList extends React.Component {
     }
 
     return (
-      <div className={classes.root}>
+      <div className={classes.container}>
         <List dense={true} disablePadding={true} >
           {categories.map(category => (
             <ItemsByCat
