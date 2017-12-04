@@ -2,10 +2,6 @@ import React from 'react';
 
 class Amazon extends React.Component {
 
-  componentWillMount() {
-    this.props.getAmazonItems('water-bottle');
-  }
-
   render() {
     return (
       <div>

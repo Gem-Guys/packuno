@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { itemsFetchData, togglePacked, deleteItem } from '../actions/items.actions';
 import { enterEditItemMode } from '../actions/editMode.actions';
 import ItemList from '../components/ItemList.component';
+import { retrieveAmazonAsync } from '../actions/Amazon.actions';
 
 const getVisibleItems = (items, filter) => {
   if (filter === 'SHOW_ALL') {
@@ -39,6 +40,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchItems: (tripId) => {
     dispatch(itemsFetchData(tripId));
+  },
+  retrieveAmazonAsync: (query) => {
+    dispatch(retrieveAmazonAsync(query));
   },
 });
 
