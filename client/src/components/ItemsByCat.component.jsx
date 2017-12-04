@@ -7,8 +7,9 @@ import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui-icons/Delete';
 import EditIcon from 'material-ui-icons/Edit';
+import Button from 'material-ui/Button';
 
-const ItemsByCat = ({ items, category, onItemClick, onDeleteClick, onEditClick, classes }) => {
+const ItemsByCat = ({ items, category, onItemClick, onDeleteClick, onEditClick, classes, retrieveAmazonAsync }) => {
 
   const catItems = items.filter(item => item.category === category);
 
@@ -17,39 +18,35 @@ const ItemsByCat = ({ items, category, onItemClick, onDeleteClick, onEditClick, 
       <div>
         <ListSubheader disableSticky={true} >{category}</ListSubheader>
         {catItems.map(item => (
-          <ListItem
-            key={item.id}
-            dense={true}
-            button
-            disableRipple
-            onClick={() => onItemClick(item.id)}
-            className={classes.listItem}
-          >
-            <Checkbox
-              checked={item.packed}
+            <ListItem
+              key={item.id}
+              dense={true}
+              button
               disableRipple
-            />
-            <ListItemText primary={(item.quantity) ? `${item.quantity} ${item.item}` : item.item} />
-            <ListItemSecondaryAction >
-            <IconButton
+              onClick={() => onItemClick(item.id)}
+              className={classes.listItem}
+            >
+              <Checkbox
+                checked={item.packed}
+                disableRipple
+              />
+              <ListItemText primary={(item.quantity) ? `${item.quantity} ${item.item}` : item.item} />
+              <ListItemSecondaryAction >
+              <IconButton
                 aria-label="Edit"
                 onClick={() => onEditClick(item.id)}
               >
-                <EditIcon />
-              </IconButton>
-              <IconButton
-                aria-label="Delete"
-                onClick={() => onDeleteClick(item.id)}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-            <div>
-              <button>-</button>
-                <span id='counter'>0</span>
-              <button>+</button>
-            </div>
-          </ListItem>
+                  <EditIcon />
+                </IconButton>
+                <IconButton
+                  aria-label="Delete"
+                  onClick={() => onDeleteClick()}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+              <Button className={classes.button} onClick={() => retrieveAmazonAsync(item.item)}>Shop</Button>
+            </ListItem>
           ))}
       </div>
     );

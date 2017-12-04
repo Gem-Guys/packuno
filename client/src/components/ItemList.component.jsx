@@ -7,8 +7,12 @@ import ItemsByCat from '../components/ItemsByCat.component';
 const styles = theme => ({
   root: {
     width: '100%',
-    maxWidth: 360,
+    maxWidth: 700,
     background: theme.palette.background.paper,
+  },
+  button: {
+    marginLeft: theme.spacing.unit,
+    display: 'inline-block',
   },
 });
 
@@ -20,7 +24,7 @@ class ItemList extends React.Component {
   }
 
   render() {
-    const { items, categories, onItemClick, onDeleteClick, onEditClick, classes } = this.props;
+    const { items, categories, onItemClick, onDeleteClick, onEditClick, classes, retrieveAmazonAsync } = this.props;
 
     if (items.length === 0) {
       return <div>Add Items</div>;
@@ -36,6 +40,7 @@ class ItemList extends React.Component {
               onItemClick={onItemClick}
               onDeleteClick={onDeleteClick}
               onEditClick={onEditClick}
+              retrieveAmazonAsync={retrieveAmazonAsync}
               key={category}
             />
           ))}
@@ -62,6 +67,7 @@ ItemList.propTypes = {
   onDeleteClick: PropTypes.func.isRequired,
   onEditClick: PropTypes.func.isRequired,
   fetchItems: PropTypes.func.isRequired,
+  retrieveAmazonAsync: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ItemList);
