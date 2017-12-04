@@ -197,6 +197,7 @@ class AddTrip extends React.Component {
                       })
                      const destination = window.store.getState().trips.byId[tripId].destination;
                      this.props.Destination(destination);
+                     window.location.assign('/dashboard');
                     }}
                   className={(this.state.selectedTrip === tripId) ? classes.selectedTripBox : classes.tripBox}
                 >

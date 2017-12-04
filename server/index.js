@@ -145,7 +145,7 @@ app.get(
 // redirects to /dashboard on successful login
 app.get('/auth/google/callback',
   passport.authenticate('google', {
-    successRedirect: '/',
+    successRedirect: '/trip',
     failureRedirect: '/login',
   }),
 );
