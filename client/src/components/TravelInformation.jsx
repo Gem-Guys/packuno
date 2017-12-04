@@ -1,8 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import Paper from 'material-ui/Paper';
 
 const countries = require('country-list')();
 
+const styles = theme => ({
+  root: theme.mixins.gutters({
+    width: 600,
+  }),
+});
 
 const travelDataUrl = 'https://cadatacatalog.state.gov/dataset/7233a430-59d6-437a-99a0-53183366f24c/resource/70630a59-0f74-4fae-83cb-098b28c71793/download/countrytravelinfo.json';
 const travelDataUrl2 = 'https://cadatacatalog.state.gov/storage/f/2016-03-03T20%3A05%3A31.000Z/csi.json';
@@ -12,6 +18,7 @@ const travelInfoStyle = {
   width: '300px',
   height: '500px',
 };
+
 const fixedBarStyle = {
   position: 'static',
   width: '680px',
@@ -63,7 +70,7 @@ class TravelInformation extends React.Component {
         let country = dataArr.filter((country) => {
           if (country.iso_code) {
             return country.iso_code === this.state.isoCode;
-          } 
+          }
         })[0];
         if (!country) {
           country = dataArr.filter((country) => {
@@ -83,6 +90,7 @@ class TravelInformation extends React.Component {
   render() {
     return (
       <div style={travelInfoStyle}>
+      <Paper style={fixedBarStyle}>
         <div className="btn-group sticky-top" role="group" aria-label="Basic example" style={fixedBarStyle}>
           <button
             type="button"
@@ -138,6 +146,7 @@ class TravelInformation extends React.Component {
         <div className="info-container" style={infoStyle}>
           {this.state.render && this.state.isoCode ? <div dangerouslySetInnerHTML={{ __html: this.state.info }} /> : ''}
         </div>
+      </Paper>
       </div>
     );
   }

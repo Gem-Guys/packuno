@@ -5,6 +5,7 @@ import CurrencyAmountInput from './CurrencyAmountInput.jsx'
 import CurrencyDropDown from './CurrencyDropDown.jsx';
 import axios from 'axios';
 import fx from 'money';
+import Paper from 'material-ui/Paper';
 const countries = require('country-list')();
 const currency = require('currency-code-map')
 
@@ -71,8 +72,8 @@ class CurrencyConverter extends React.Component {
           to: toCurrency,
         }).toFixed(2);
         const countries = Object.keys(rates);
-      
-  
+
+
         this.setState({
           fromAmount: amount,
           toAmount: foreignAmount,
@@ -106,27 +107,29 @@ class CurrencyConverter extends React.Component {
   render() {
     return (
       <div style={currencyConverterStyle}>
-        <h3>Currency Converter</h3>
-        <div>{`${this.state.countryName}'s currency code is: `} <span style={currencyCodeStyle}>{this.state.currencyCode}</span></div>
-        <div>
-        </div>
-        <MuiThemeProvider>
+        <Paper>
+          <h3>Currency Converter</h3>
+          <div>{`${this.state.countryName}'s currency code is: `} <span style={currencyCodeStyle}>{this.state.currencyCode}</span></div>
           <div>
-            <div className="fromCurrency">
-              <CurrencyAmountInput updateAmount={this.props.updateAmount} updateParentState={this.updateParentState.bind(this, 'fromAmount')}/>
-             FROM: <CurrencyDropDown countries={this.state.countries} defaultCurrency={'USD'} updateParentState={this.updateParentState.bind(this, 'fromCurrency')} />
-            </div>
-            <div className="toCurrency">
-              TO: <CurrencyDropDown  countries={this.state.countries} defaultCurrency={'CAD'} updateParentState={this.updateParentState.bind(this, 'toCurrency')}/>
-            </div>
-            <div>
-            <Button raised color="primary" onClick={this.onSubmit.bind(this)} className={styles.button} style={buttonStyle}>
-              Convert Currency
-            </Button>
-            </div>
-            <div style={convertedAmountStyle}>{this.state.actualConversion}</div>
           </div>
-        </MuiThemeProvider>
+          <MuiThemeProvider>
+            <div>
+              <div className="fromCurrency">
+                <CurrencyAmountInput updateAmount={this.props.updateAmount} updateParentState={this.updateParentState.bind(this, 'fromAmount')}/>
+              FROM: <CurrencyDropDown countries={this.state.countries} defaultCurrency={'USD'} updateParentState={this.updateParentState.bind(this, 'fromCurrency')} />
+              </div>
+              <div className="toCurrency">
+                TO: <CurrencyDropDown  countries={this.state.countries} defaultCurrency={'CAD'} updateParentState={this.updateParentState.bind(this, 'toCurrency')}/>
+              </div>
+              <div>
+              <Button raised color="primary" onClick={this.onSubmit.bind(this)} className={styles.button} style={buttonStyle}>
+                Convert Currency
+              </Button>
+              </div>
+              <div style={convertedAmountStyle}>{this.state.actualConversion}</div>
+            </div>
+          </MuiThemeProvider>
+        </Paper>
       </div>
     )
   }

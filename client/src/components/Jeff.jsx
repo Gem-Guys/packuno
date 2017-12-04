@@ -11,16 +11,21 @@ const dashboardStyle = {
   display: 'inline-block',
   marginTop: '0',
 };
+
 const Jeff = () => (
   <div>
-    <Trip />
-    <Amazon />
-    <div style={dashboardStyle}>
-      <CurrencyConverter />
-      <TravelInformation />
+    <div className="left">
+      <Trip />
+      <Amazon />
     </div>
-    <Weather />
-    <CountryConditions />
+    <div className="right">
+      <Weather />
+      <div style={dashboardStyle}>
+        <CurrencyConverter />
+        <TravelInformation />
+      </div>
+      <CountryConditions />
+    </div>
   </div>
 );
 
