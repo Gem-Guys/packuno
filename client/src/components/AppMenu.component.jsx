@@ -169,7 +169,7 @@ class AppMenu extends React.Component {
               onClick={() => this.handleTripClick(tripId)}
               className={classes.tripBox}
             >
-              <img src={ trips.byId[tripId].photoUrl} className={classes.photo} />
+              <img src={"http://lorempixel.com/400/200/nature"} className={classes.photo} />
               <h4>{ trips.byId[tripId].destination }</h4>
               <span>{moment(trips.byId[tripId].startDate).format('MMMM YYYY')}</span>
             </div>

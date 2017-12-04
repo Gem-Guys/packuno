@@ -14,13 +14,13 @@ const dashboardStyle = {
 const Jeff = () => (
   <div>
     <Trip />
+    <Amazon />
     <div style={dashboardStyle}>
       <CurrencyConverter />
       <TravelInformation />
     </div>
     <Weather />
     <CountryConditions />
-    <Amazon />
   </div>
 );
 
