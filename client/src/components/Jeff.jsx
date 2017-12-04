@@ -4,6 +4,7 @@ import Weather from '../containers/Weather.container';
 import TravelInformation from './TravelInformation.jsx';
 import CurrencyConverter from './CurrencyConverter.jsx';
 import CountryConditions from './CountryConditions.component';
+import Amazon from '../containers/Amazon.container';
 
 const addTripStyle = {
   display: 'inline-block',
@@ -14,7 +15,7 @@ const dashboardStyle = {
 };
 const Jeff = () => (
   <div>
-    <div  style={addTripStyle}>
+    <div style={addTripStyle}>
       <AddTrip />
     </div>
     <div style={dashboardStyle}>
@@ -23,6 +24,7 @@ const Jeff = () => (
     </div>
     <Weather />
     <CountryConditions />
+    <Amazon />
   </div>
 );
 

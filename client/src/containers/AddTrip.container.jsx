@@ -16,11 +16,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (destination, startDate, endDate, oldTripId, userId) => {
-    console.log(dispatch(addTrip(destination, startDate, endDate, oldTripId, userId)));
-    //   .then(() => {
-    //     dispatch(Historical());
-    //   });
-    // dispatch(Forecast());
+    dispatch(addTrip(destination, startDate, endDate, oldTripId, userId));
+    dispatch(Historical());
+    dispatch(Forecast());
   },
 });
 

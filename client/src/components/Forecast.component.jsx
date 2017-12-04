@@ -1,18 +1,11 @@
 import React from 'react';
-const weatherStyle = {
-  width: '50px',
-  display: 'flex',
-}
-const fontSize = {
-  fontSize: '10px'
-}
 
 const Forecast = props => (
-  <div className="weather-widget" style={weatherStyle}>
+  <div className="weather-widget">
     {props.weather.map(item => (
-      <div className="weather-item" style={{display: 'inline-block', padding: '20px'}}>
+      <div className="weather-item">
         <h3>{item.title}</h3>
-        <div className="temp" style={fontSize}>
+        <div className="temp">
           {item.fcttext}
         </div>
         <div className="weather-pic">

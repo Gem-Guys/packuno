@@ -20,12 +20,13 @@ const port = process.env.PORT || 3000;
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-const client = amazon.createClient({
-  awsId: aws.id,
-  awsSecret: aws.secret,
-  awsTag: aws.tag,
-});
+const { OperationHelper } = require('apac');
 
+const opHelper = new OperationHelper({
+  awsId: 'AKIAJA3MSB75W4H46DGA',
+  awsSecret: '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',
+  assocId: 'ayalajohn8208',
+});
 // google OAuth using passport
 passport.use(new GoogleStrategy(
   {
@@ -108,13 +109,31 @@ app.get('/test', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
 });
 
-app.get('/itemSearch', (req, res) => {
-  client.itemSearch({
-    keyword: req.query.keyword,
-    responseGroup: 'ItemAttributes,Offers,Imaages',
-  })
-    .then(result => res.send(result))
-    .catch(err => console.log(err));
+app.get('/amazon', (req, res) => {
+  console.log('INNNNNN the SErver', req.query);
+  // client.itemSearch({
+  //   keyword: req.query.query,
+  //   responseGroup: 'ItemAttributes,Offers,Imaages',
+  // })
+  //   .then(result => res.send(result))
+  //   .catch(err => console.log(err));
+  opHelper.execute('ItemSearch', {
+    SearchIndex: 'All',
+    Keywords: req.query.query,
+    ResponseGroup: 'ItemAttributes,Images',
+  }).then((response) => {
+    // console.log('Results object: ', response.result.ItemSearchResponse.Items.Item);
+    // console.log('Raw response body: ', response.responseBody);
+    const data = response.result.ItemSearchResponse.Items.Item.map(item => ({
+      url: item.DetailPageURL,
+      image: item.LargeImage.URL,
+      name: item.ItemAttributes.Title,
+      qprice: item.ItemAttributes.ListPrice.FormattedPrice,
+    }));
+    res.send(data);
+  }).catch((err) => {
+    console.error('Something went wrong! ', err);
+  });
 });
 
 // redirects to google auth page

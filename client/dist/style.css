@@ -131,3 +131,55 @@ h2 {
   height: 200px;
   overflow-y: auto;
 }
+
+.amazonbutton {
+  
+  -moz-box-shadow:inset 0px 1px 0px 0px #f9eacf;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #f9eacf;
+  box-shadow:inset 0px 1px 0px 0px #f9eacf;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #F6DD9F), color-stop(1, #F0C24D) );
+  background:-moz-linear-gradient( center top, #F6DD9F 5%, #F0C24D 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=’#F6DD9F‘, endColorstr=’#F0C24D‘);
+  background-color:#f5d78a;
+  text-indent:0px;
+  border:1px solid #cbaa5c;
+  display:inline-block;
+  color:#111111;
+  font-size:13px;
+  font-weight:normal;
+  font-style:normal;
+  height:25px;
+  line-height:25px;
+  width:100px;
+  text-decoration:none;
+  text-align:center;
+}
+
+.amazon {
+  text-indent:0px;
+  display:inline-block;
+  color:#111111;
+  font-size:13px;
+  font-weight:normal;
+  font-style:normal;
+  text-decoration:none;
+  text-align:center;
+  width: 100px;
+}
+
+.amazonimg {
+  width: auto;
+  height: 100px;
+}
+
+.amazonbutton:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #F5D589), color-stop(1, #EEBA35) );
+  background:-moz-linear-gradient( center top, #F5D589 5%, #EEBA35 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=’#F5D589′, endColorstr=’#EEBA35′);
+  background-color:#eeba35;
+}
+
+.amazonbutton:active {
+  position:relative;
+  top:1px;
+}

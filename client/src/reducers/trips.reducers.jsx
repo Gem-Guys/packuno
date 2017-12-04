@@ -23,8 +23,6 @@ export const currentTripId = (state = null, action) => {
   }
 
   if (action.type === 'UPDATE_CURRENT_TRIP') {
-    dispatch(Historical());
-    dispatch(Forecast());
     return action.tripId;
   }
   return state;
