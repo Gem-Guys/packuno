@@ -39,16 +39,11 @@ const ItemsByCat = ({ items, category, onItemClick, onDeleteClick, onEditClick, 
               </IconButton>
               <IconButton
                 aria-label="Delete"
-                onClick={() => onDeleteClick(item.id)}
+                onClick={() => console.log('im the item', item.item)}
               >
                 <DeleteIcon />
               </IconButton>
             </ListItemSecondaryAction>
-            <div>
-              <button>-</button>
-                <span id='counter'>0</span>
-              <button>+</button>
-            </div>
           </ListItem>
           ))}
       </div>

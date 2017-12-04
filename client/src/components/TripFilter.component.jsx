@@ -11,20 +11,7 @@ class TripFilter extends Component {
     this.state = {
       activities: Object.keys(Templates),
       selected: [],
-      // activities: [
-      //   {
-      //     activity: 'Fine Dining',
-      //     click: false,
-      //   },
-      //   {
-      //     activity: 'Beach',
-      //     click: false,
-      //   },
-      //   {
-      //     activity: 'Gym',
-      //     click: false,
-      //   }]
-    }
+    };
     this.toggleBox = this.toggleBox.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
@@ -33,13 +20,11 @@ class TripFilter extends Component {
   }
 
   toggleBox(label) {
-    console.log('im the label', label);
     if (this.selectedBox.has(label)) {
       this.selectedBox.delete(label);
     } else {
       this.selectedBox.add(label);
     }
-    console.log(this.selectedBox);
   }
 
   handleFormSubmit(event) {
@@ -47,27 +32,27 @@ class TripFilter extends Component {
     const activityList = [];
     for (const box of this.selectedBox) {
       activityList.push(box);
-    }
+    };
     console.log('activityList', activityList);
-    this.setState({selected: activityList}, )
+    this.setState({ selected: activityList });
   }
 
-  render(){
+  render() {
     return (
       <div>
         Activities
 
         <form onSubmit={this.handleFormSubmit}>
-          {this.state.activities.map(activity => {
-            return <Activity activity={activity} handleCheckboxChange={this.toggleBox} key={activity} />
-          })}
-          <button type='submit'>Enter</button>
+          {this.state.activities.map(activity => (
+            <Activity activity={activity} handleCheckboxChange={this.toggleBox} key={activity} />
+          ))}
+          <button type="submit">Enter</button>
         </form>
-        {this.state.selected.map(category => {
-          return <AddRecommended category={category} key={category} />
-        })}
+        {this.state.selected.map(category => (
+          <AddRecommended category={category} key={category} />
+        ))}
       </div>
-    )
+    );
   }
 }
 

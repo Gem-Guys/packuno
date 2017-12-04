@@ -38,6 +38,7 @@ const styles = theme => ({
   },
   appBar: {
     color: 'white',
+    backgroundImage: 'url("https://image.freepik.com/free-photo/wood-background-texture_1421-587.jpg")',
     position: 'absolute',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -80,7 +81,6 @@ const styles = theme => ({
   content: {
     width: '100%',
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -156,7 +156,7 @@ class AppMenu extends React.Component {
   state = {
     open: false,
   };
-  
+
   UpcomingTrips = () => {
     const { trips, isLoggedIn, onTripClick, classes } = this.props;
     if (isLoggedIn && trips.allIds.length > 0) {
