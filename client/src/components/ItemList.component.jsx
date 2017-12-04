@@ -16,9 +16,11 @@ const styles = theme => ({
     display: 'inline-block',
   },
   icon: {
+    width: 10,
     marginLeft: theme.spacing.unit,
   },
   edit: {
+    width: 10,
     marginLeft: theme.spacing.unit,
   }
 });

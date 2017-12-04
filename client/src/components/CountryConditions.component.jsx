@@ -43,7 +43,9 @@ class CountryConditions extends Component {
     this.setState({
       worldData,
       dataByCountry,
-      selectedCountry: countryName
+      selectedCountry: countryName,
+      mouseOverCountry: 'Japan',
+      mouseOverCountryCondition: 'Exercise normal security precautions (with regional advisories)',
     });
   }
 

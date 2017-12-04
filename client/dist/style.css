@@ -186,3 +186,14 @@ h2 {
   position:relative;
   top:1px;
 }
+
+.left {
+  float: left;
+  width: 30%;
+  margin-right: 200;
+}
+
+.right {
+  float: right;
+  width: 65%;
+}
