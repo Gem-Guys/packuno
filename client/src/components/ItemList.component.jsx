@@ -6,7 +6,7 @@ import ItemsByCat from '../components/ItemsByCat.component';
 
 const styles = theme => ({
   container: {
-    width: 400,
+    width: 450,
     display: 'flex',
     flexWrap: 'wrap',
     background: theme.palette.background.paper,
