@@ -2,12 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Trip from '../components/Trip.component';
+import AddTrip from '../containers/AddTrip.container';
 import Dashboard from '../components/Dashboard.component';
 import LoginCont from '../containers/Login.container';
 import Jeff from '../components/Jeff';
 import Weather from '../containers/Weather.container';
 
+const addTripStyle = {
+  display: 'inline-block',
+};
+const dashboardStyle = {
+  display: 'inline-block',
+  marginTop: '0',
+};
 
 export class AppContainer extends React.Component {
 
@@ -17,9 +24,12 @@ export class AppContainer extends React.Component {
       return (
           <Router>
           <div>
-            <Route path="/" component={Jeff} />
+            
+            <Route path="/dashboard" component={Jeff} />
             <Route path="/test" render={ () => <Weather /> } />
-            <Route path="/trip" component={Trip} />
+            <div style={addTripStyle}>
+              <Route path="/trip" component={AddTrip} />
+            </div>
             {/* <Route path="/login" component={LoginCont} /> */}
           </div>
         </Router>
