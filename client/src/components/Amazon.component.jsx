@@ -12,9 +12,9 @@ class Amazon extends React.Component {
         <h1>Hello</h1>
         {console.log(this.props)}
         {this.props.amazon.map(item => (
-          <div className="product">
-            <ul>{item.name}</ul>
-            <img src={item.image}></img>
+          <div className="amazon">
+            <img src={item.image} alt="product" className="amazonimg"></img>
+            <ul>{item.name.split(' ')[0]}</ul>
             <ul>{item.qprice}</ul>
             <button className="amazonbutton" onClick={() => { window.open(item.url, '_blank'); }} >Shop</button>
           </div>

@@ -141,18 +141,6 @@ h2 {
   background:-moz-linear-gradient( center top, #F6DD9F 5%, #F0C24D 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=’#F6DD9F‘, endColorstr=’#F0C24D‘);
   background-color:#f5d78a;
-  -webkit-border-top-left-radius:6px;
-  -moz-border-radius-topleft:6px;
-  border-top-left-radius:6px;
-  -webkit-border-top-right-radius:6px;
-  -moz-border-radius-topright:6px;
-  border-top-right-radius:6px;
-  -webkit-border-bottom-right-radius:6px;
-  -moz-border-radius-bottomright:6px;
-  border-bottom-right-radius:6px;
-  -webkit-border-bottom-left-radius:6px;
-  -moz-border-radius-bottomleft:6px;
-  border-bottom-left-radius:6px;
   text-indent:0px;
   border:1px solid #cbaa5c;
   display:inline-block;
@@ -162,9 +150,26 @@ h2 {
   font-style:normal;
   height:25px;
   line-height:25px;
-  width:180px;
+  width:100px;
   text-decoration:none;
   text-align:center;
+}
+
+.amazon {
+  text-indent:0px;
+  display:inline-block;
+  color:#111111;
+  font-size:13px;
+  font-weight:normal;
+  font-style:normal;
+  text-decoration:none;
+  text-align:center;
+  width: 100px;
+}
+
+.amazonimg {
+  width: auto;
+  height: 100px;
 }
 
 .amazonbutton:hover {
