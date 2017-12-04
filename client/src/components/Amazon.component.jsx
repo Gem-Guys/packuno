@@ -5,7 +5,7 @@ class Amazon extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello</h1>
+        <h3>Amazon Suggestions</h3>
         {console.log(this.props)}
         {this.props.amazon.map(item => (
           <div className="amazon">
